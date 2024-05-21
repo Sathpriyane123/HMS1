@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>BLOG</title>
+    <style>
+        :root{
+            --primary-color:#28bf96;
+            --primary-color-dark:#209677;
+            --text-light:#6b7280;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .superNav{
+            height: 160px;
+            background-color: #28bf96;
+            margin: 0;
+            overflow: hidden;
+            line-height: none;
+        }
+        body{
+            font-family: "Robto", sans-serif;
+            background-image: url('static/webbg4.jpg');
+            background-attachment: fixed;
+            background-size:cover;
+        }
+        h2{
+            font-size: 30px;
+            font-weight: bolder;
+            color: #fff;
+            background-color: #28bf96;
+            padding-left: 20px;
+            padding-top: 30px;
+            cursor: pointer;
+        }
+        .navlinks{
+            text-decoration: none;
+            float: left;
+            text-decoration: none;
+            margin-left: 30%;
+            margin-bottom: 20px;
+            position: relative;
+            top: -50px;
+            display: flex;
+        }
+        .link{
+            float: left;
+            text-decoration: none;
+            margin: 30px;
+            color: #fff;
+            bottom: 20px;
+            font-weight: bold;
+        }
+        .link:hover{
+        color: green;
+        }
+        .loginbtn{
+            float: right;
+            margin-right: 10px;
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .loginbtn:hover{
+            color: green;
+            background-color: #fff;
+            transition: 5,ease;
+        }
+        .admin{
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .admin:hover{
+            color: green;
+            background-color: #fff;
+        }
+        #clock{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .blog{
+            position: relative;
+            text-align: center;
+            align-items: center;
+            float: inline-end;
+            width: 100%;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+        }
+        .img{
+            margin: 10px;
+            align-items: center;
+            float: left;
+            text-align: center;
+            position: relative;   
+        }
+        .imgs{
+            height: 250px;
+            width: 400px;
+            cursor:pointer;
+        }
+        .fg{
+            margin: 10%;
+        }
+        .txt{
+            text-align: justify;
+            float: left;
+            margin: 10px;
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+        #feed{
+            height: 30px;
+            width: 300px;
+            margin-top: 10px;
+            background-color: aqua;
+            float: left;
+            
+        }
+        .feedbtn{
+            float: left;
+            padding: 10px 10px;
+            margin-left: 20px;
+            color: #fff;
+            background-color: blue;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .feedbtn:hover{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="superNav navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MEDICOHealth</a>
+            <div id="clock"></div>
+            <a href="{% url 'adminbtn' %}" class="btn btn-success">Admin</a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'page' %}">Our service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="{% url 'loginbtn' %}" class="btn btn-outline-light">Login</a>
+        </div>
+    </div>
+    </section>
+
+    <div class="blog">
+        <h1>BLOG</h1><hr>
+    </div>
+    <div class="fg">
+        <div class="img">
+            <img src="{% static 'hp.jpeg'%}" alt="" class="imgs">
+            <div class="txt">
+            <p>In the rapidly evolving landscape of healthcare, effective hospital management is crucial for providing optimal patient care and ensuring operational efficiency. This blog post explores the key trends and advancements shaping the future of hospital management, paving the way for a more streamlined, patient-centric, and technologically advanced healthcare system.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static 'hpm1.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Digital Transformation in Hospital Management:</b></h4>
+                <p>Embracing digital technologies is paramount for modern hospital management. Electronic Health Records (EHRs), telemedicine, and health information systems play a pivotal role in enhancing communication, reducing errors, and improving overall patient outcomes. Explore the benefits and challenges associated with the digital transformation of hospital management.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static 'hpm2.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+            <h4><b>Patient-Centric Care:</b></h4>
+            <p>The future of hospital management revolves around prioritizing patient-centric care. Discuss the importance of personalized treatment plans, improved communication between healthcare providers and patients, and the integration of patient feedback for continuous improvement. Highlight successful case studies of hospitals that have successfully implemented patient-centric initiatives.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static 'hpm3.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Data Analytics and Predictive Modeling:</b></h4>
+                <p>Harnessing the power of data analytics and predictive modeling can significantly impact hospital management. Delve into how hospitals can use data to optimize resource allocation, predict patient admission rates, and identify trends in healthcare outcomes. Discuss the potential of artificial intelligence in making data-driven decisions for better patient care.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static '/hpm5.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Staff Training and Development:</b></h4>
+                <p>A well-trained and motivated healthcare workforce is essential for effective hospital management. Explore the importance of ongoing staff training and development programs, including the use of simulation training and virtual reality. Discuss how investing in the professional growth of healthcare professionals contributes to improved patient care.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static '/hpm7.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Supply Chain Optimization:</b></h4>
+                <p>Efficient supply chain management is critical for ensuring a continuous and timely supply of medical resources. Discuss the role of technology in optimizing the hospital supply chain, reducing costs, and preventing shortages. Highlight real-world examples of hospitals that have successfully implemented innovative supply chain management strategies.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static '/hpm8.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Telehealth and Remote Patient Monitoring:</b></h4>
+                <p>The COVID-19 pandemic accelerated the adoption of telehealth services. Explore how hospital management can leverage telehealth for remote consultations, follow-ups, and monitoring chronic conditions. Discuss the challenges and opportunities associated with integrating telehealth into traditional hospital management models.</p>
+            </div>
+        </div>
+        <div class="img">
+            <img src="{% static '/hpm10.jpg'%}" alt="" class="imgs">
+            <div class="txt">
+                <h4><b>Cybersecurity in Healthcare:</b></h4>
+                <p>With the increasing reliance on digital technologies, hospitals must prioritize cybersecurity to protect patient data and ensure the integrity of healthcare systems. Discuss the latest trends in healthcare cybersecurity, potential threats, and best practices for safeguarding sensitive patient information.</p>
+            </div>
+        </div>
+        <div class="img">
+            <h5><b>GALLERY</b></h5>
+            <img src="{% static '/hpm11.jpg'%}" alt="" class="imgs">
+            <img src="{% static '/hpm12.jpg'%}" alt="" class="imgs">
+            <img src="{% static '/hpm13.jpg'%}" alt="" class="imgs">
+            <img src="{% static '/hpm14.jpg'%}" alt="" class="imgs">
+        </div>
+        <div class="img">
+            <iframe src="{% static '/hpv1.mp4'%}" frameborder="0"  allowfullscreen autoplay muted style="height: 250px; width: 400px; align-items:center ; margin-left: 30%; float: left;"></iframe>
+        </div>
+        <div class="img">
+            <iframe src="{% static '/hpv2.mp4'%}" frameborder="0"  allowfullscreen autoplay muted style="height: 250px; width: 400px; align-items:center ; margin-left: 30%; float: left;"></iframe>
+        </div>
+        <div class="img">
+            <br>
+            <p class="txt">The future of hospital management is dynamic and multifaceted, with technology, patient-centric care, and data-driven decision-making at its core. By embracing these trends, hospitals can navigate the challenges of the evolving healthcare landscape and continue to provide high-quality care to their communities. As we move forward, the integration of innovative solutions will undoubtedly shape the next chapter of healthcare management.</p>
+        </div>
+        <div class="img">
+            <form action="feedbacks" method="POST">
+                {% csrf_token %}
+                <h4 class="txt"><b>FEEDBACK</b></h4><br>
+                <input type="text" name="name" id="feed" placeholder="Name">
+                <input type="text" name="feedback" id="feed" placeholder="feedback">
+                <input type="submit" name="" class="feedbtn">
+                {{feed}}
+            </form>
+
+        </div>
+    </div>
+ <script>
+            function updateClock() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('clock').textContent = dateTimeString;
+        }
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        // Initial update
+        updateClock();
+ </script>
+</body>
+</html>

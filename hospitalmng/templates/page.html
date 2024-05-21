@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    {% load static %}
+    <style>
+        :root{
+            --primary-color:#28bf96;
+            --primary-color-dark:#209677;
+            --text-light:#6b7280;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .superNav{
+            height: 160px;
+            background-color: #28bf96;
+            margin: 0;
+            overflow: hidden;
+            line-height: none;
+        }
+        body{
+            font-family: "Robto", sans-serif;
+            background-image: url(' static/webbg2.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        h2{
+            font-size: 30px;
+            font-weight: bolder;
+            color: #fff;
+            background-color: #28bf96;
+            padding-left: 20px;
+            padding-top: 30px;
+            cursor: pointer;
+        }
+        .navlinks{
+            text-decoration: none;
+            float: left;
+            text-decoration: none;
+            margin-left: 30%;
+            margin-bottom: 20px;
+            position: relative;
+            top: -50px;
+            display: flex;
+        }
+        .link{
+            float: left;
+            text-decoration: none;
+            margin: 30px;
+            color: #fff;
+            bottom: 20px;
+            font-weight: bold;
+        }
+        .link:hover{
+        color: green;
+        }
+        .loginbtn{
+            float: right;
+            margin-right: 10px;
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .loginbtn:hover{
+            color: green;
+            background-color: #fff;
+            transition: 5,ease;
+        }
+        .admin{
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+            float: left;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+        .admin:hover{
+            color: green;
+            background-color: #fff;
+        }
+        #clock{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .page{
+            position: relative;
+            text-align: center;
+            align-items: center;
+            float: inline-end;
+            width: 100%;
+            margin: auto;
+            margin-top: 160px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            color: red;
+
+        }
+        .hospitaltable{
+            float: left;
+            margin: 40px;
+            align-items: center;
+            margin-left: 5%;
+        }
+        .btn2{
+            background-color: blue;
+            color: #fff;
+            height: 100px;
+            width: 200px;
+            padding: auto;
+            font-size: 15px;
+            font-weight: bolder;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            opacity: 70%;
+        }
+        .btn3{
+            background-color: red;
+            color: #fff;
+            height: 100px;
+            width: 200px;
+            padding: auto;
+            font-size: 15px;
+            font-weight: bolder;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            opacity: 70%;
+        }
+        .btn2:hover{
+            border: solid 3px black;
+            border-collapse: collapse;
+            background-color: green;
+            color: #fff;
+        }
+        .btn3:hover{
+            background-color: blue;
+            color: #fff;
+          border: solid 3px black;  
+        }
+    </style>
+</head>
+<body>
+    <div class="superNav navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MEDICOHealth</a>
+            <div id="clock"></div>
+            <a href="{% url 'adminbtn' %}" class="btn btn-success">Admin</a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'page' %}">Our service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="{% url 'loginbtn' %}" class="btn btn-outline-light">Login</a>
+        </div>
+    </div>
+    </section>
+
+    <div class="page">
+        <h1>PAGE</h1><hr>
+    </div>
+    <div class="hospitaltable">
+        <a href="{% url 'displayop' %}"><input type="submit" class="btn2" name="displayop" value="view hospital departments"></a>
+    </div>
+    <div class="hospitaltable">
+        <a href="{% url 'bloodbtn' %}"><input type="submit" name="bloodbtn" value="blood donation form" class="btn3"></a>
+    </div>
+    <div class="hospitaltable">
+        <a href="{% url 'displaydoctors' %}"><input type="submit" value="our doctors" name="displaydoctors" class="btn2"></a>
+    </div>
+    <div class="hospitaltable">
+        <a href="{% url 'bloodbank' %}"><input type="submit" value="avaliable bloodgroup" class="btn3" name="bloodbank"></a>
+    </div>
+    <div class="hospitaltable">
+        <a href="{% url 'opstatus' %}"><input type="submit" value="view op status" class="btn2" name="opstatus"></a>
+    </div>
+<script>
+            function updateClock() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('clock').textContent = dateTimeString;
+        }
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        // Initial update
+        updateClock();
+
+</script>   
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDICOhealth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% load static %}
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            background-image: url('static/hospitalweb.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            margin-top: 160px;
+        }
+        :root {
+            --primary-color: #28bf96;
+            --primary-color-dark: #209677;
+            --text-light: #6b7280;
+        }
+        .superNav {
+            height: 160px;
+            background-color: #28bf96;
+            overflow: hidden;
+            line-height: none;
+        }
+        h2 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28bf96;
+            padding-left: 20px;
+            padding-top: 30px;
+            cursor: pointer;
+        }
+        .navlinks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .link {
+            margin: 0 15px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .link:hover {
+            color: green;
+        }
+        .loginbtn {
+            margin-right: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+            background-color: green;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .loginbtn:hover {
+            background-color: #fff;
+            color: green;
+        }
+        .admin {
+            margin-left: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+            background-color: green;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .admin:hover {
+            background-color: #fff;
+            color: green;
+        }
+        #clock {
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .form {
+            background-color: #fff;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            opacity: 0.8;
+            margin: 20px;
+        }
+        .book {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .bookbtn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: blue;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.6;
+        }
+        .bookbtn:hover {
+            background-color: greenyellow;
+            color: blue;
+        }
+        .homep {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="superNav navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">MEDICOHealth</a>
+            <div id="clock"></div>
+            <a href="{% url 'adminbtn' %}" class="btn btn-success">Admin</a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'page' %}">Our service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="{% url 'loginbtn' %}" class="btn btn-outline-light">Login</a>
+        </div>
+    </div>
+    </section>
+
+    <div class="body">
+        <h1>HOSPITAL MANAGEMENT</h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="form">
+                        <p class="homep">Welcome to MEDICOhealth Where Your Health is Our Priority!<br><br>At Medico health calicut, we're dedicated to providing top-notch healthcare with a personal touch. Our modern facilities, expert medical staff, and cutting-edge technology are here to ensure your well-being. Navigate through our website to discover our range of services, schedule appointments effortlessly, and stay informed about the latest updates. Your health journey starts here, and we're honored to be your trusted healthcare partner. Welcome to a healthier tomorrow with Medico health calicut!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="book">
+                <p>Are you need to appointments</p>
+                <a href="{% url 'bookbtn' %}" class="bookbtn">Book Now</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('clock').textContent = dateTimeString;
+        }
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        // Initial update
+        updateClock();
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root{
+            --primary-color:#28bf96;
+            --primary-color-dark:#209677;
+            --text-light:#6b7280;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: "Robto", sans-serif;
+        }
+        .superNav{
+            height: 160px;
+            background-color: #28bf96;
+            margin: 0;
+            overflow: hidden;
+            line-height: none;
+        }
+        body{
+            font-family: "Robto", sans-serif;
+        }
+        h2{
+            font-size: 30px;
+            font-weight: bolder;
+            color: #fff;
+            background-color: #28bf96;
+            padding-left: 20px;
+            padding-top: 30px;
+            cursor: pointer;
+        }
+        .navlinks{
+            text-decoration: none;
+            float: left;
+            text-decoration: none;
+            margin-left: 30%;
+            margin-bottom: 20px;
+            position: relative;
+            top: -50px;
+            display: flex;
+        }
+        .link{
+            float: left;
+            text-decoration: none;
+            margin: 30px;
+            color: #fff;
+            bottom: 20px;
+            font-weight: bold;
+        }
+        .link:hover{
+        color: green;
+        }
+        .loginbtn{
+            float: right;
+            margin-right: 10px;
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .loginbtn:hover{
+            color: green;
+            background-color: #fff;
+            transition: 5,ease;
+        }
+        .loginbtn{
+            float: right;
+            margin-right: 10px;
+            padding: auto;
+            height: 30px;
+            width: 60px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background-color: green;
+            font-weight: bolder;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .loginbtn:hover{
+            color: green;
+            background-color: #fff;
+            transition: 5,ease;
+        }
+        #clock{
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .graph-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="superNav border-bottom py-2 fixed-top" id="nav1">
+            <nav>
+                <div class="nav_logo"><h2>DASHBORD</h2>
+                    <h6> user:{{data.doctorsname}}</h6>
+                </div>
+
+                <div id="clock"></div>
+                <div class="navlinks">
+                    <a href="{% url 'dashbord' %}" class="link" name="dashbord"><p>DASHBOARD</p></a>
+                    <a href="{% url 'appointmentstatus' %}" class="link" name="appointmentstatus"><p>APPOINTMENTS</p></a>
+                    <a href="{% url 'patient' %}" class="link" name="patient"><p>PATIENTS</p></a>
+                </div>
+                <a href="{% url 'home1' %}"><input type="submit" value="logout" class="loginbtn" name="btn1"></a>
+            </nav>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Graph container -->
+            <div class="graph-container">
+                <h2 class="text-center">Appointments Graph</h2>
+                <!-- Graph placeholder -->
+                <canvas id="appointment-graph" style="height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JavaScript for graph (you can replace this with your actual graph script) -->
+    <script>
+           const appointmentData = {
+            'Dr. Smith': {
+                '2023-01-01': 3,
+                '2023-01-02': 4,
+                '2023-01-03': 2,
+                '2023-01-04':1,
+                
+            },
+        };
+
+        // Get the canvas element for the graph
+        const ctx = document.getElementById('appointment-graph').getContext('2d');
+
+        // Prepare data for graph
+        const doctors = Object.keys(appointmentData);
+        const dates = Object.keys(appointmentData[doctors[0]]);
+        const doctorData = doctors.map(doctor => ({
+            label: doctor,
+            data: dates.map(date => appointmentData[doctor][date]),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }));
+
+        // Create graph using Chart.js
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: doctorData
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
