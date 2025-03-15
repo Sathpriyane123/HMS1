@@ -4,9 +4,8 @@ __pycache__/
 *.pyo
 
 # Ignore virtual environment
-# venv/
-# myenv/
-
+# 
+# 
 # Ignore environment variables
 .env
 
